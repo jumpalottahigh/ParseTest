@@ -3,28 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Parse.com Test</title>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="//www.parsecdn.com/js/parse-1.6.11.min.js"></script>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/handlebars/handlebars.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.6.11.min.js"></script>
 </head>
 <body>
-  <nav>
-    <ul class="nav nav-pills">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Superheroes</a></li>
-    </ul>
-  </nav>
+  <div id="root">
+    <header>
+      <h1>The superheroes database</h1>
+    </header>
 
-<script>
-  Parse.initialize("BugIlMRAamMSfJgoyHSDqAMjPC3xEM8q4j1FbT3r", "RcABDkdIvWiMESVxD3CmIoVTF3KlyRFkY26CjkEp");
-</script>
+    <div id="superheroes-container" class="container">
 
-<script src="scripts/app.js"></script>
-<script>
+    </div>
+  </div>
 
+  <script src="scripts/app.js"></script>
 
-
-
-</script>
+  <!-- HANDLE BARS TEMPLATE -->
+  <script id="superhero-template" type="text/handlebars-template">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>{{name}}</h2>
+      </div>
+      <img src="{{img}}" class="col-xs-3">
+      <ul class="col-xs-9">
+        {{#each power}}
+          <li> {{this}} </li>
+        {{/each}}
+      </ul>
+    </div>
+  </script>
 </body>
 </html>
