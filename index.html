@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Parse.com Test</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="//www.parsecdn.com/js/parse-1.6.11.min.js"></script>
@@ -13,9 +14,40 @@
     <header>
       <h1>The superheroes database</h1>
     </header>
-
-    <div id="superheroes-container" class="container">
-
+    <div class="container">
+      <div class="row">
+        <div id="superheroes-container" class="container col-xs-5">
+        </div>
+        <div class=" container col-xs-7">
+          <strong class="row">Add hero</strong>
+          <div class="row">
+            <form class="form container col-xs-6">
+              <div class="row form-group form-inline">
+                <label for="tb-img" class="col-xs-3 control-label">
+                  Image:
+                </label>
+                <input class="col-xs-3 form-control" id="tb-img" type="text">
+              </div>
+              <div class="row form-group form-inline">
+                <label for="tb-name" class="col-xs-3 control-label">
+                  Name:
+                </label>
+                <input class="col-xs-3 form-control" id="tb-name" type="text">
+              </div>
+              <div class="row form-group form-inline">
+                <label for="tb-powers" class="col-xs-3 control-label">
+                  Powers:
+                </label>
+                <input class="col-xs-3 form-control" id="tb-powers" type="text">
+              </div>
+            </form>
+            <img id="img-new-hero" class="col-xs-5">
+          </div>
+          <div class="row">
+            <button id="btn-add-superhero" class="col-xs-offset-2 col-xs-7">Add</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -23,16 +55,20 @@
 
   <!-- HANDLE BARS TEMPLATE -->
   <script id="superhero-template" type="text/handlebars-template">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>{{name}}</h2>
+    <div class="superhero-item row">
+      <div class="row">
+          <div class="col-xs-10">
+            <h2 class="text-center">{{name}}</h2>
+          </div>
+          <button class="btn-delete close col-xs-2" data-superhero-id="{{id}}">x</button>
+        </div>
+        <img src="{{img}}" class="col-xs-6">
+        <ul class="col-xs-3">
+          {{#each power}}
+            <li> {{this}} </li>
+          {{/each}}
+        </ul>
       </div>
-      <img src="{{img}}" class="col-xs-3">
-      <ul class="col-xs-9">
-        {{#each power}}
-          <li> {{this}} </li>
-        {{/each}}
-      </ul>
     </div>
   </script>
 </body>

@@ -1,0 +1,12 @@
+.superhero-item {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 5px;
+}
+
+.superhero-item:last-of-type {
+  border-bottom: none;
+}
+
+.superhero-item h2 {
+  margin-top: 0;
+}
